@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ruby on Rack Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <div class="nav pull-left">
+            <a href='/' class="brand">Ruby on Rack Demo</a>
+          </div>
+          <ul class="nav pull-right">
+            <% if user %>
+              <li><a href="/sign_out"><img style="max-width:20px;" src='<%= user.image %>' /><%= user.name %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <% if user %>
+            <h2>Hello, <%= user.name %>!</h2>
+            <img src='<%= user.image %>'>
+
+            <h3>Profile:</h3>
+            <p><a href='<%= "http://github.com/#{user.nickname}" %>' target="_blank">github/<%= user.nickname %></a></p>
+          <% else %>
+            <h2>Not Signed In!</h2>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
