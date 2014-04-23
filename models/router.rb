@@ -1,5 +1,4 @@
 class Router
-
   def self.routes
     @routes ||= {}
   end
@@ -28,7 +27,6 @@ class Router
       @app = app
     end
 
-
     def call(env)
       req = Rack::Request.new(env)
       route = Router.routes[req.path_info] || {}
@@ -44,5 +42,39 @@ class Router
       controller = Object.const_get(controller_name).new
       controller.call(env)
     end
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class RickRollMiddleware
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    status, headers, body = @app.call(env)
   end
 end
