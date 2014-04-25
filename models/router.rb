@@ -40,6 +40,7 @@ class Router
     def call(env)
       controller_name = env['controller'].capitalize + 'Controller'
       controller = Object.const_get(controller_name).new
+      puts "the controller is #{controller}"
       controller.call(env)
     end
   end
